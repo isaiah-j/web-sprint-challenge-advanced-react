@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { useForm } from '../hooks/useForm'
 
 const initialValue = {
-  firstName: "",
-  lastName: "",
-  address: "",
-  city: "",
-  state: "",
-  zip: "",
+  firstName: "John ",
+  lastName: "Doe",
+  address: "1337 Ave",
+  city: "erie",
+  state: "pennsylvania",
+  zip: "30000",
 };
 
 // This form should be handled by a "useForm" custom hook
@@ -15,7 +15,7 @@ const initialValue = {
 // and replace the necessary stateful logic from CheckoutForm with the hook
 
 const CheckoutForm = (props) => {
-  
+
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [values, handleChanges] = useForm(initialValue);
 
@@ -65,7 +65,7 @@ const CheckoutForm = (props) => {
           Zip:
           <input name="zip" value={values.zip} onChange={handleChanges} />
         </label>
-        <button>Checkout</button>
+        <button name="checkout">Checkout</button>
       </form>
 
       {showSuccessMessage && (

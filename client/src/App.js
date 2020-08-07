@@ -4,12 +4,14 @@ import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import PlantList from "./components/PlantList";
 import ShoppingCart from "./components/ShoppingCart";
 import CheckoutForm from "./components/CheckoutForm";
-
+import { useForm } from './hooks/useForm'
 import "./App.css";
 
 function App() {
   // array of plants that have been added to the cart
   const [cart, setCart] = useState([]);
+
+  const [searchValue, handleChange] = useForm()
 
   // add a plant to the cart
   const addToCart = (plant) => {
@@ -43,11 +45,12 @@ function App() {
               </NavLink>
             </li>
           </ul>
+          <input type="text" name="filteredValue" onChange={handleChange}></input>
         </nav>
         <Route
           exact
           path="/"
-          render={() => <PlantList addToCart={addToCart} />}
+          render={() => <PlantList addToCart={addToCart} searchValue={searchValue} />}
         />
         <Route
           path="/cart"
